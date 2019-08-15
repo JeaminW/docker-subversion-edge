@@ -1,6 +1,6 @@
 FROM mamohr/centos-java:jre8
 
-MAINTAINER Mario Mohr <mohr.mario@gmail.com>
+LABEL maintainer xps2
 
 RUN \
   yum update -y && \
@@ -9,7 +9,7 @@ RUN \
   yum clean all && \
   easy_install supervisor
 
-ENV FILE https://downloads-guests.open.collab.net/files/documents/61/17071/CollabNetSubversionEdge-5.2.0_linux-x86_64.tar.gz
+ENV FILE https://downloads-guests.open.collab.net/files/documents/61/18736/CollabNetSubversionEdge-5.2.1_linux-x86_64.tar.gz
 
 RUN wget -q ${FILE} -O /tmp/csvn.tgz && \
     mkdir -p /opt/csvn && \
