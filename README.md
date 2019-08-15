@@ -4,6 +4,12 @@ This is a docker image of the Collabnet Subversion Edge Server
 
 forked from mamohr/subversion-edge
 
+## Fork modifications (> 5.2.2)
+
+* Changed to original CentOS image.
+* Changed from Oracle JDK to OpenJDK.
+* If you are migrating from mamohr/subversion-edge, you need to change JAVA_HOME to '/usr/java/latest'. Please edit '/srv/svn-data/conf/csvn.conf'.
+
 ## Usage
 
 The image is exposing the data dir of csvn as a volume under `/opt/csvn/data`.
