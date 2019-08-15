@@ -1,23 +1,17 @@
-FROM mamohr/centos-java:jre8
+FROM centos:7
 
 LABEL maintainer xps2
 
 RUN \
   yum update -y && \
   yum install -y epel-release && \
-  yum install -y net-tools python-setuptools hostname inotify-tools yum-utils && \
-  yum clean all && \
-  easy_install supervisor
+  yum install -y java-1.8.0-openjdk net-tools hostname inotify-tools yum-utils supervisor && \
+  yum clean all
 
-ENV FILE https://downloads-guests.open.collab.net/files/documents/61/18759/CollabNetSubversionEdge-5.2.2_linux-x86_64.tar.gz
+ADD CollabNetSubversionEdge-5.2.4_linux-x86_64.tar.gz /opt
 
-RUN wget -q ${FILE} -O /tmp/csvn.tgz && \
-    mkdir -p /opt/csvn && \
-    tar -xzf /tmp/csvn.tgz -C /opt/csvn --strip=1 && \
-    rm -rf /tmp/csvn.tgz
-
+ENV JAVA_HOME /usr/lib/jvm/jre
 ENV RUN_AS_USER collabnet
-
 
 RUN useradd collabnet && \
     chown -R collabnet.collabnet /opt/csvn && \
