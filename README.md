@@ -18,7 +18,8 @@ The container exposes the following ports:
 
  * 3343 - HTTP CSVN Admin Sites
  * 4434 - HTTPS CSVN Admin Sites (If SSL is enabled)
- * 18080 - Apache Http SVN
+ * 80 - Apache Http SVN
+ * 443 - Apache Https SVN (If SSL is enabled)
 
 The simplest way to start a subversion edge server is
 
@@ -28,14 +29,14 @@ This will run the server. It will only be reachable from the docker host by usin
 
 Exposing the ports from the host:
     
-    docker run -d -p 3343:3343 -p 4434:4434 -p 18080:18080 \
+    docker run -d -p 3343:3343 -p 4434:4434 -p 80:80 -p 443:443 \
         --name svn-server xps2/subversion-edge
 
 This will make the admin interface reachable under [http://docker-host:3343/csvn](http://docker-host:3343/csvn).
 
 If you want to provide a host path for the data use command like this:
 
-    docker run -d -p 3343:3343 -p 4434:4434 -p 18080:18080 \
+    docker run -d -p 3343:3343 -p 4434:4434 -p 80:80 -p 443:443 \
         -v /srv/svn-data:/opt/csvn/data --name svn-server xps2/subversion-edge
     
 
