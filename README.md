@@ -7,7 +7,7 @@ forked from mamohr/subversion-edge
 ## Fork modifications (> 5.2.2)
 
 * Changed to original CentOS image.
-* Changed from Oracle JDK to OpenJDK.
+* Changed from Oracle JRE to OpenJDK.
 * If you are migrating from mamohr/subversion-edge, you need to change JAVA_HOME to '/usr/lib/jvm/jre'. Please edit '/srv/svn-data/conf/csvn.conf'.
 
 ## Usage
