@@ -1,12 +1,12 @@
-FROM centos:7
+FROM registry.access.redhat.com/ubi7-minimal
 
 LABEL maintainer xps2
 
 RUN \
-  yum update -y && \
-  yum install -y epel-release && \
-  yum install -y java-1.8.0-openjdk-headless sudo supervisor && \
-  yum clean all
+  microdnf update -y && \
+  rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
+  microdnf install -y file-libs java-1.8.0-openjdk-headless sudo supervisor && \
+  microdnf clean all
 
 ADD CollabNetSubversionEdge-5.2.4_linux-x86_64.tar.gz /opt
 
