@@ -4,9 +4,9 @@ This is a docker image of the Collabnet Subversion Edge Server
 
 forked from mamohr/subversion-edge
 
-## Fork modifications (> 5.2.2)
+## Fork modifications (ubi7)
 
-* Changed to original CentOS image.
+* Changed to ubi7-minimal image.
 * Changed from Oracle JRE to OpenJDK.
 * If you are migrating from mamohr/subversion-edge, you need to change JAVA_HOME to '/usr/lib/jvm/jre'. Please edit '/srv/svn-data/conf/csvn.conf'.
 
@@ -23,21 +23,21 @@ The container exposes the following ports:
 
 The simplest way to start a subversion edge server is
 
-    docker run -d xps2/subversion-edge
+    docker run -d xps2/subversion-edge:ubi7
 
 This will run the server. It will only be reachable from the docker host by using the container ip address
 
 Exposing the ports from the host:
     
     docker run -d -p 3343:3343 -p 4434:4434 -p 80:80 -p 443:443 \
-        --name svn-server xps2/subversion-edge
+        --name svn-server xps2/subversion-edge:ubi7
 
 This will make the admin interface reachable under [http://docker-host:3343/csvn](http://docker-host:3343/csvn).
 
 If you want to provide a host path for the data use command like this:
 
     docker run -d -p 3343:3343 -p 4434:4434 -p 80:80 -p 443:443 \
-        -v /srv/svn-data:/opt/csvn/data --name svn-server xps2/subversion-edge
+        -v /srv/svn-data:/opt/csvn/data --name svn-server xps2/subversion-edge:ubi7
     
 
 For information to further configuration please consult the documentation at [CollabNet](http://collab.net/products/subversion).
